@@ -1,11 +1,11 @@
 # urg_node
 
-This set of instructions will help you install and test the Hokuyo URG Laser.
+This set of instructions will help you install and test the Hokuyo 'urg_node' ROS package.
 
 
 ### Install the driver (ROS Package) for publishing the laser scan data.
 1. Install the package
-  - `sudo apt-get install ros-kinetic-urg-node`
+  &nbsp;&nbsp;- `sudo apt-get install ros-kinetic-urg-node`
 2. Change directories to the root of your Catkin Workspace: 
   - `cd ~/catkin_ws`
   - `catkin_make`
