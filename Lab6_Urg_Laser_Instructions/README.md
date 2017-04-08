@@ -1,6 +1,6 @@
 # urg_node
 
-This set of instructions will help you install and test the Hokuyo 'urg_node' ROS package.
+This set of instructions will help you install and test the Hokuyo urg_node ROS package.  Details about the package can be found [here](http://wiki.ros.org/urg_node).
 
 
 ### Install the driver (ROS Package) for publishing the laser scan data.
