@@ -9,20 +9,23 @@ This set of instructions will help you install and test the Hokuyo urg_node ROS 
 2. Change directories to the root of your Catkin Workspace: 
     + `cd ~/catkin_ws`
     + `catkin_make`
-3. Configure the Hokuyo Laser; Switch to super user mode in order to update Udev rules:
+3. Configure the Hokuyo Laser; change directories to where usb device (udev) rules are stored.
+    + `cd /etc/udev/rules.d/`
+4. Switch to super user mode in order to update Udev rules:
     + `sudo su`
-4. Create udev rules so that the read-write permissions for the laser are automatically setup every time it is connected.
+5. Create udev rules so that the read-write permissions for the laser are automatically setup every time it is connected.
     + `nano 99-urg.rules`
   - Add the following line in the newly created file and then save upon exit by entering Ctrl-x, then answer 'y', and finally hit 'Enter'.
     + `SUBSYSTEMS=="usb", ATTRS{idVendor}=="15d1", ATTRS{idProduct}=="0000", MODE="0666", SYMLINK+="lidar_hokuyo", GROUP="dialout"`
-5. Reload the rules
+6. Reload the rules
     + `udevadm control --reload-rules`
-6. Exit from super user mode
+7. Exit from super user mode
     + `exit`
-7. Check to ensure your user account is part of the 'dialout' group.  As part of the 'dialout' group, your user account will have read and write access to the tty serial ports. 
+8. Check to ensure your user account is part of the 'dialout' group.  As part of the 'dialout' group, your user account will have read and write access to the tty serial ports. 
     + `groups`
     + See if 'dialout' is listed in the terminal output.  If not, then add your user account to the 'dialout' group by typing:
     + `sudo adduser your_username dialout`
+    + Note:  You won't see that your user account has been added to the dialout group until you log out and log back in.  
 
 ###  Test the Hokuyo Laser
 
