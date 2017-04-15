@@ -11,6 +11,6 @@ This set of instructions supplements your lab handout.
     + You should publish this information at a rate of 10 Hz.  The sensor is capable of providing data at faster rate, but this isn't necessary for your application.  
 
 ### Incorporate bearing and distance calculator code in waypoint navigator node.
-1.  Provided in this Lab Github folder you will see a Python script titled, 'calc_bearing_and_distance.py'.  Experiment with is code and validate it's operation using Google Maps to obtain sets of Lat/Lon coordinates.  Also, validate the accuracy of the UTM function by obtaining UTM coordinates from the following [website](https://mappingsupport.com/p/coordinates-utm-google-maps.html)
+1.  Provided in this Lab Github folder you will see a Python script titled, 'calc_bearing_and_distance.py'.  Experiment with this code and validate its operation using Google Maps to obtain sets of Lat/Lon coordinates.  Also, validate the accuracy of the UTM function by obtaining UTM coordinates from the following [website](https://mappingsupport.com/p/coordinates-utm-google-maps.html).  You can use the code to compare the output of both methods for obtaining bearning and distance.
 2.  Use these functions in your navigation node that controls the Traxxas.  
 3.  You may wish to only use the bearing and distance resulting from UTM coordinates, or you may wish to average the result of both methods before providing your robot a direction to follow toward a waypoint.
