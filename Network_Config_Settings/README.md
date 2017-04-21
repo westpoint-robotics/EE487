@@ -31,7 +31,8 @@ This set of instructions explains how to connect the Raspberry Pi to different n
     + Once both computers have been configured, you should be able to ping the RPi from the laptop.
          + You may need to reboot the RPi for the settings in the 'interfaces' file to take effect.
          + Ensure your Ethernet port on your laptop is 'up' by typing the following command in the terminal:  `sudo ifconfig yourLaptopEthernetPortName up` or by selecting the interface in Network Manager GUI.
-         + Once the interface is up, try pinging the RPi by typing `ping 192.168.0.xxx`where xxx is the last octet address of your RPi. 
+         + Once the interface is up, try pinging the RPi by typing `ping 192.168.0.xxx` where xxx is the last octet address of your RPi.
+         + If you can successfully ping the RPi, then you'll be able to ssh into the device. 
             
     
               
