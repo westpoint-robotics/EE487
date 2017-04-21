@@ -3,7 +3,7 @@
 source-directory /etc/network/interfaces.d
 
 #The loopback network interface
-#Leave this lines uncommented
+#Leave these lines uncommented
 
 auto lo
 iface lo inet loopback
