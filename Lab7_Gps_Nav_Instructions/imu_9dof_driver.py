@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import rospy,time,smbus,numpy,math
+import rospy,time,smbus,numpy,math,subprocess
 
 #Global variables
 
@@ -52,14 +52,18 @@ bus.write_byte_data(GYRO_ADDRESS,CTRL_REG1_G,0x0F) #turn on gyro and set to norm
 #define functions
 
 def readSensor(sensorAdd,xH,xL,yH,yL,zH,zL):
-    xMSB = numpy.uint8(bus.read_byte_data(sensorAdd,xH))
-    xLSB = numpy.uint8(bus.read_byte_data(sensorAdd,xL)) 
+    try:
+        xMSB = numpy.uint8(bus.read_byte_data(sensorAdd,xH))
+        xLSB = numpy.uint8(bus.read_byte_data(sensorAdd,xL)) 
 
-    yMSB = numpy.uint8(bus.read_byte_data(sensorAdd,yH)) 
-    yLSB = numpy.uint8(bus.read_byte_data(sensorAdd,yL)) 
+        yMSB = numpy.uint8(bus.read_byte_data(sensorAdd,yH)) 
+        yLSB = numpy.uint8(bus.read_byte_data(sensorAdd,yL)) 
 
-    zMSB = bus.read_byte_data(sensorAdd,zH) 
-    zLSB = bus.read_byte_data(sensorAdd,zL)
+        zMSB = bus.read_byte_data(sensorAdd,zH) 
+        zLSB = bus.read_byte_data(sensorAdd,zL)
+    except IOError:
+        print "I2C IO Error"
+        subprocess.call(['i2cdetect', '-y', '1']) #try to use i2cdetect command to reinitialize i2c bus
 
     x = (xMSB << 8) | xLSB
     x_float = numpy.int16(x) #value is expressed as two's complement, so need numpy casing as int16
