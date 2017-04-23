@@ -14,3 +14,21 @@ This set of instructions supplements your lab handout.
 1.  Provided in this Lab Github folder you will see a Python script titled, 'calc_bearing_and_distance.py'.  Experiment with this code and validate its operation using Google Maps to obtain sets of Lat/Lon coordinates.  Also, validate the accuracy of the UTM function by obtaining UTM coordinates from the following [website](https://mappingsupport.com/p/coordinates-utm-google-maps.html).  You can use the Python script to compare the output of both methods for obtaining bearning and distance.
 2.  Use these functions in your navigation node that controls the Traxxas.  
 3.  You may wish to only use the bearing and distance resulting from UTM coordinates, or you may wish to average the result of both methods before providing your robot a direction to follow toward a waypoint.
+
+### Record waypoints to a CSV file using the Provided ROS Package.
+1.  There is a ROS package in this Github folder titled 'gps_waypoint_recorder'.  Download this directory and copy onto your Raspberry Pi in your `~\catkin_ws\src` directory.  Afterwards, type `cd ..` to get to the `\catkin_ws` directory, then enter `catkin_make`.  Finally, enter `rospack profile`.  Once finished, the package should be installed.  You can check by entering `rospack find gps_waypoint_recorder`.   
+2.  Review the contents of the package and ensure you understand the code.
+3.  If you reviewed the code thoroughly, then you should know that a button is required and which GPIO pin it should be connected.
+4.  Use the launch file provided to start all the nodes needed to record GPS data (i.e., lat, lon, utm_x, and utm_y).
+5.  After launching the waypoint recorder, type `rqt_graph` in a new terminal window.  Do you understand what all the nodes are doing?  For instance, which is providing the UTM coordinates?
+6.  Use this waypoint recorder package to log GPS waypoints to a CSV file.  Once started, take your Traxxas to a desired waypoint, then press the pushbutton.  It will record the latitude/longitude & UTM coordinates to a CVS file.  You can repeat this process of moving the Traxxas to as many waypoints as desired.     
+7.  Note:  The program is designed to "append" newly recorded waypoints to the csv file.  This allows a series of different waypoints to be included in the same file.  However, you will need to manually delete old waypoints from the csv file if they are no longer desired.  Therefore, it is best to inspect the waypoint csv before commanding your robot to proceed to a series of waypoints. 
+
+### Read waypoints from a CSV.
+1.  There are two files in this Github directory that demonstrate how to read only one waypoint from a file containing multiple waypoints.  These files are called 'waypoint_reader_example.py' and 'waypoints.csv'.  
+2.  Given the scenario where a robot must travel to a series of consecutive waypoints, the Python script shows how to extract only one waypoint (i.e., row) from a file that contains multiple waypoints (i.e., rows).  
+3.  The csv file is provided with a list of several waypoints so that the Python script can be tested.
+4.  You should incorporate this code into your own navigation node.  For instance, the node should initially read in the first waypoint from the file and then travel to that point.  Once reached, it should read in a new waypoint and continue the process until there are no more waypoints in the list.
+
+ 
+
