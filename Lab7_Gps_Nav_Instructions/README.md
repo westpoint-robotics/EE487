@@ -15,7 +15,7 @@ This set of instructions supplements your lab handout.
 2.  Use these functions in your navigation node that controls the Traxxas.  
 3.  You may wish to only use the bearing and distance resulting from UTM coordinates, or you may wish to average the result of both methods before providing your robot a direction to follow toward a waypoint.
 
-### Record waypoints to a csv file using thepProvided ROS package.
+### Record waypoints to a csv file using the provided ROS package.
 1.  There is a ROS package in this Github folder titled 'gps_waypoint_recorder'.  Download this directory and copy onto your Raspberry Pi in the `~\catkin_ws\src` directory.  Afterwards, type `cd ..` to get to the `\catkin_ws` directory, then enter `catkin_make`.  Finally, enter `rospack profile`.  Once finished, the package should be installed.  You can check by entering `rospack find gps_waypoint_recorder`.   
 2.  Review the contents of the package and ensure you understand the code.
 3.  If you reviewed the code thoroughly, then you should know that a button is required and which GPIO pin it should be connected.
