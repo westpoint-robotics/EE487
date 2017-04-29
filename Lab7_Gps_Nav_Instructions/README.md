@@ -30,5 +30,7 @@ This set of instructions supplements your lab handout.
 3.  The csv file is provided with a list of several waypoints so that the Python script can be tested.
 4.  You should incorporate this code into your own navigation node.  For instance, the node should initially read in the first waypoint from the file and then travel to that point.  Once reached, it should read in a new waypoint and continue the process until there are no more waypoints in the list.
 
- 
-
+### Use callbacks to update global variables asynchronously, while processing state machine logic using an indefinite while() loop.
+1.  Despite multiple nodes running concurrently in ROS, it is possible to implement a state machine using an indefinite while() loop that executes in a sequential fashion.  The use of callbacks in the publisher/subscriber framework of ROS means that multiple processes are running in parallel and that variables are changing asynchronously, but this doesn't mean we can't control logic and decision making to execute in sequential order.  
+2.  The trick is to use callbacks only for updating global variables which are referenced whenever needed in a "main" while() loop.  The purpose of the callbacks is to continually update the global variables, so that when they are referenced, the latest information is being used in the while() control loop.  
+3.  In this Github folder, there is a Python script titled, "ROS_while_loop_example.py".  It is template which shows how to implement such a model where callbacks update global variables and a while() loop executes instructions sequentially.  Pay particular attention to the comments provided in the script and why the spin() instruction, which is normally used in simple subscribers, is not used in this type of control (i.e., state machine) node.  
