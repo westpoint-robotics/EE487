@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 '''
 Author:  LTC Lowrance
-Purpose:  Plot recorded GPS & Odometry local frame coordinates together in animation fashion.
+Purpose:  Plot logged GPS & Odometry local frame coordinates together in animation fashion.
 Details:  Program opens two separate cvs files (odometry & gps) & stores the data (time & coordinates) in lists.        
-Afterwards, the script plots  the odom & gps coordinates sequentially in time as they were recorded.  
+Afterwards, the script plots the odom & gps coordinates sequentially in time as they were recorded.  
 If Odom coordinates were updated more frequently than GPS (1Hz), then plotter skips some odom coordinates 
 and only plots the recording nearest in time when the current GPS coordinate was stored.
 
