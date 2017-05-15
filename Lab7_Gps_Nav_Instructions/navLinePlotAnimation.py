@@ -60,6 +60,10 @@ plt.plot(xGPS,yGPS, label='GPS')
 plt.legend(loc='lower right')
 #turn on interact plot
 plt.ion()
+#add labels & title
+plt.xlabel("x Coordinate (meters)")
+plt.ylabel("y Coordinate (meters)")
+plt.title("GPS and Odometry Comparsion from Robot's World Frame View")
 
 #loop through coordinates for animation
 #use gps as base time (plot points on a roughly 1Hz timescale)

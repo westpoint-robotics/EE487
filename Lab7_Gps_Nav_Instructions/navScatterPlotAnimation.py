@@ -27,14 +27,14 @@ gpsTime = []
 gpsX = []
 gpsY = []
 
-with open('/home/christopher_lowrance/workspace/odomCoordinates.csv','r') as odomPoints: #change path to file as necessary
+with open('/home/eecs/workspace/odomCoordinates.csv','r') as odomPoints: #change path to file as necessary
     for line in odomPoints:     #iterate over every line in file
         odomPointList = line.strip().split(',') #convert string into list of strings; slit into list based on commas in string 
         odomPointList = map(float,odomPointList) #convert list of strings into list of floats
         odomTime.append(odomPointList[0])
         odomX.append(odomPointList[1])
         odomY.append(odomPointList[2])
-with open('/home/christopher_lowrance/workspace/gpsTransformedCoords.csv','r') as gpsPoints: #change path to file as necessary
+with open('/home/eecs/workspace/gpsTransformedCoords.csv','r') as gpsPoints: #change path to file as necessary
     for line in gpsPoints:     #iterate over every line in file
         gpsPointList = line.strip().split(',') #convert string into list of strings; slit into list based on commas in string 
         gpsPointList = map(float,gpsPointList) #convert list of strings into list of floats
@@ -81,7 +81,7 @@ plt.ion()
 #add labels & title
 plt.xlabel("x Coordinate (meters)")
 plt.ylabel("y Coordinate (meters)")
-plt.title("GPS and Odometry Comparsion using Local Frame")
+plt.title("GPS and Odometry Comparsion from Robot's World Frame View")
 
 #loop through coordinates for animation
 #use gps as base time (plot points on a roughly 1Hz timescale)
