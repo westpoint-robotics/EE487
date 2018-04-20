@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import RPi.GPIO as GPIO
 import time
 import smbus,numpy,math
 
@@ -23,28 +22,7 @@ OUT_Z_H_M = 0x05
 #define objects
 bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
-#initialize accelerometer
-#bus.write_byte_data(ACC_ADDRESS,CTRL_REG1_A,0x27) #bring the accelerometer into normal operation mode with ODR 50Hz
-#keep a full scale range +/-2 gauss in continuous data update mode and change the little-endian to a big-endian structure.
-#where MSB is located at lower address
-#bus.write_byte_data(ACC_ADDRESS,CTRL_REG4_A,0x40)
-
-#initialize magnetometer
-#try:
-
 bus.write_byte_data(MAG_ADDRESS,CTRL_MODE,0x00) 
-#except IOError:
-#    subprocess.call(['i2cdetect', '-y', '1'])
-#    flag = 1     #optional flag to signal your code to resend or something
-
-#setup to change board numbering schema to use phyiscal pin layout (not GPIO numbers)
-GPIO.setmode(GPIO.BOARD)
-
-#setup GPIO output
-GPIO.setup(8, GPIO.OUT)
-GPIO.setup(10, GPIO.OUT)
-GPIO.setup(12,GPIO.OUT)
-GPIO.setup(16, GPIO.OUT)
 
 
 #define functions
@@ -84,31 +62,6 @@ try:
             #get magnetometer reading
             mX,mY,mZ = getMag()  #if first transition to "Move" state, then record initial mag reading as center position for servo
             heading = calcHeading(mX,mY) 
-            if (heading >= 325 and heading <=360) or (heading < 45):
-                #light up 'North' LED
-                GPIO.output(8,True)
-                GPIO.output(10,False)
-                GPIO.output(12,False)
-                GPIO.output(16,False)
-                
-            elif (heading >= 45 and heading <135):
-                GPIO.output(10,True)
-                GPIO.output(8,False)
-                GPIO.output(12,False)
-                GPIO.output(16,False)
-                
-            elif (heading >= 135 and heading < 225):
-                GPIO.output(12,True)
-                GPIO.output(10,False)
-                GPIO.output(8,False)
-                GPIO.output(16,False)
-                
-            else:
-                #light up 'West' LED
-                GPIO.output(16,True)
-                GPIO.output(10,False)
-                GPIO.output(12,False)
-                GPIO.output(8,False)
             print (heading)
             time.sleep(0.3)
 except KeyboardInterrupt:
